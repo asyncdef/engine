@@ -20,12 +20,14 @@ class Selector(base.Processor):
     def __init__(
             self,
             selector: selectors.BaseSelector=None,
+            timeout=None,
             exc_handler: typing.Callable[[], None]=None,
             logger: logging.Logger=None,
     ):
         """Initialize the processor with an optional selector."""
         super().__init__(exc_handler, logger)
         self._selector = selector or selectors.DefaultSelector()
+        self._timeout = timeout
 
     def __call__(self):
         """Execute the processor."""
@@ -44,7 +46,7 @@ class Selector(base.Processor):
 
     def _handle_events(self):
         """Poll the selector for IO events and dispatch them."""
-        for key, event_mask in self._selector.select():
+        for key, event_mask in self._selector.select(self._timeout):
 
             self._handle_event(key, event_mask)
 

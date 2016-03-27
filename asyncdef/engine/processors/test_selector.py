@@ -18,7 +18,7 @@ class StaticSelector:
         self.events = []
         self.listeners = {}
 
-    def select(self):
+    def select(self, timeout=None):
         """Get all the events."""
         events, self.events = self.events, []
         return events
