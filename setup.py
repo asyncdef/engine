@@ -17,7 +17,11 @@ setup(
     author_email="kevinjacobconway@gmail.com",
     long_description=README,
     license='Apache 2.0',
-    packages=find_packages(exclude=['build', 'dist', 'docs']),
+    packages=[
+        'asyncdef',
+        'asyncdef.engine',
+        'asyncdef.engine.processors',
+    ],
     install_requires=[
         'iface<2.0.0',
         'asyncdef.interfaces<2.0.0',
