@@ -52,16 +52,16 @@ class Selector(base.Processor):
 
     def add_reader(
             self,
-            fd: iselector.FileLike,
-            callback: typing.Callable[[iselector.FileLike], typing.Any],
+            fd: iselector.IFileLike,
+            callback: typing.Callable[[iselector.IFileLike], typing.Any],
     ) -> None:
         """Add a file descriptor to the processor and wait for READ.
 
         Args:
-            fd (iselector.FileLike): Any obect that exposes a 'fileno' method
+            fd (iselector.IFileLike): Any obect that exposes a 'fileno' method
                 that returns a valid file descriptor integer.
-            callback (typing.Callable[[iselector.FileLike], typing.Any]): A
-                function that consumes the FileLike object whenever the READ
+            callback (typing.Callable[[iselector.IFileLike], typing.Any]): A
+                function that consumes the IFileLike object whenever the READ
                 event is fired.
         """
         try:
@@ -88,11 +88,11 @@ class Selector(base.Processor):
             (callback, writer, fd),
         )
 
-    def remove_reader(self, fd: iselector.FileLike) -> bool:
+    def remove_reader(self, fd: iselector.IFileLike) -> bool:
         """Remove a file descriptor waiting for READ from the processor.
 
         Args:
-            fd (iselector.FileLike): Any obect that exposes a 'fileno' method
+            fd (iselector.IFileLike): Any obect that exposes a 'fileno' method
                 that returns a valid file descriptor integer.
 
         Returns:
@@ -123,16 +123,16 @@ class Selector(base.Processor):
 
     def add_writer(
             self,
-            fd: iselector.FileLike,
-            callback: typing.Callable[[iselector.FileLike], typing.Any],
+            fd: iselector.IFileLike,
+            callback: typing.Callable[[iselector.IFileLike], typing.Any],
     ) -> None:
         """Add a file descriptor to the processor and wait for WRITE.
 
         Args:
-            fd (iselector.FileLike): Any obect that exposes a 'fileno' method
+            fd (iselector.IFileLike): Any obect that exposes a 'fileno' method
                 that returns a valid file descriptor integer.
-            callback (typing.Callable[[iselector.FileLike], typing.Any]): A
-                function that consumes the FileLike object whenever the WRITE
+            callback (typing.Callable[[iselector.IFileLike], typing.Any]): A
+                function that consumes the IFileLike object whenever the WRITE
                 event is fired.
         """
         try:
@@ -159,11 +159,11 @@ class Selector(base.Processor):
             (reader, callback, fd),
         )
 
-    def remove_writer(self, fd: iselector.FileLike) -> bool:
+    def remove_writer(self, fd: iselector.IFileLike) -> bool:
         """Remove a file descriptor waiting for WRITE from the processor.
 
         Args:
-            fd (iselector.FileLike): Any obect that exposes a 'fileno' method
+            fd (iselector.IFileLike): Any obect that exposes a 'fileno' method
                 that returns a valid file descriptor integer.
 
         Returns:
