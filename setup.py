@@ -10,7 +10,7 @@ with open('README.rst', 'r') as readmefile:
 
 setup(
     name='asyncdef.engine',
-    version='0.1.0',
+    version='0.1.1',
     url='https://github.com/asyncdef/engine',
     description='Core event loop implementation.',
     author="Kevin Conway",
